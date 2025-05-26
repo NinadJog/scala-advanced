@@ -143,6 +143,9 @@ object JSONSerialization {
     */
 
     // Also define an apply method that surfaces out the JSONConverter.
+    // It's because of this apply method that we were able to use
+    // JSONConverter[String].convert, JSONConverter[User].convert, etc.
+    // in the givens above. If we comment it out, none of them will compile
     def apply[T](using instance: JSONConverter[T]): JSONConverter[T] = instance
   }
 
